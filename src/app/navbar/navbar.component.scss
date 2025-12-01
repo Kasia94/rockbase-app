@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(var(--color-bg), 0.5);
+
+  color:  var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+}
+
+.logo a {
+  font-size: 24px;
+  // font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: $font-primary;
+    @include gradient-text(var(--color-primary), var(--color-accent));
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color:  var(--color-text);
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  padding:  7px;
+}
+
+.nav-links a:hover {
+  color: var(color-accent);
+  border: 0.5px solid #e30613; 
+  border-radius: 6px;        
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-toggle img {
+  width: 96px;
+  height: 48px;
+  object-fit: cover;
+  object-position: left;
+  transition: object-position 0.3s ease;
+}
+
+.theme-toggle img.dark {
+  object-position: right;
+}
+
+
+=

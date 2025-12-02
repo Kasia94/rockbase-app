@@ -1,0 +1,26 @@
+<h2>Koncerty</h2>
+<app-search
+  [placeholder]="'Szukaj koncertu...'"
+  [query]="concertName()"
+  (search)="searchConcert($event)"
+></app-search>
+@if (paginatedConcerts().length) {
+  <ul>
+    @for (concert of paginatedConcerts(); track concert.id) {
+      <li>
+        @if (concert.strArtistBanner) {
+          <div>
+            <img [src]="concert.strArtistBanner" alt="Artist Banner" />
+          </div>
+        }
+        <h3>
+          {{ concert.name }}
+        </h3>
+      </li>
+    }
+  </ul>
+  <app-pagination></app-pagination>
+} @else {
+  <p>Brak wyszukiwanego koncertu</p>
+  <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />
+}

@@ -1,0 +1,36 @@
+// /* Light mode */
+// body {
+//   background-color: #fff;
+//   color: #000;
+// }
+
+// /* Dark mode */
+// body.dark-mode {
+//   background-color: #121212;
+//   color: #fff;
+// }
+
+// /* Navbar w dark mode */
+// body.dark-mode .navbar {
+//   background-color: #222;
+//   color: #fff;
+// }
+:root {
+  --color-bg: #f9f9f9;
+  --color-surface: #ffffff;
+  --color-primary: #e30613;
+  --color-accent: #ffcc00;
+  --color-text: #000000;
+  --color-muted: #666666;
+  --color-border: #dddddd;
+}
+
+body.dark-mode {
+  --color-bg: #0d0d0d;
+  --color-surface: #1a1a1a;
+  --color-primary: #e30613;
+  --color-accent: #ffcc00;
+  --color-text: #ffffff;
+  --color-muted: #999999;
+  --color-border: #333333;
+}

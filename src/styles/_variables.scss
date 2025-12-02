@@ -1,0 +1,47 @@
+//  Kolory
+// $color-bg: #0d0d0d;           // głębokie czarne tło
+// $color-surface: #1a1a1a;      // ciemna powierzchnia np. dla kart
+// $color-primary: #e30613;      // intensywna rockowa czerwień
+// $color-accent: #ffcc00;       // złoty akcent
+// $color-text: #ffffff;         // tekst biały
+// $color-muted: #999999;        // tekst pomocniczy
+// $color-border: #333333;       // delikatne obramowania
+//  Paleta DARK
+$color-bg-dark: #0d0d0d;
+$color-surface-dark: #1a1a1a;
+$color-primary-dark: #e30613;
+$color-accent-dark: #ffcc00;
+$color-text-dark: #ffffff;
+$color-muted-dark: #999999;
+$color-border-dark: #333333;
+
+//  Paleta LIGHT
+$color-bg-light: #f9f9f9;
+$color-surface-light: #ffffff;
+$color-primary-light: #e30613;
+$color-accent-light: #cc0000;
+$color-text-light: #000000;
+$color-muted-light: #666666;
+$color-border-light: #dddddd;
+
+//  Fonty
+$font-primary: 'Oswald', sans-serif;     // nagłówki, przyciski
+$font-secondary: 'Roboto', sans-serif;   // treść, opisy
+
+//  Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+//  Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+//  Efekty
+$transition-fast: 0.2s ease-in-out;
+$transition-slow: 0.4s ease-in-out;
+$box-shadow-default: 0 2px 8px rgba(0, 0, 0, 0.5);

@@ -1,0 +1,26 @@
+<h2>Zespoły</h2>
+<app-search
+  [placeholder]="'Szukaj zespołu...'"
+  [query]="bandName()"
+  (search)="searchBand($event)"
+></app-search>
+@if (paginatedBands().length > 0) {
+  <ul>
+    @for (band of paginatedBands(); track band.idArtist) {
+      <li>
+        @if (band.strArtistBanner) {
+          <div>
+            <img [src]="band.strArtistBanner" alt="Artist Banner" />
+          </div>
+        }
+        <h3>
+          {{ band.strArtist }}
+        </h3>
+      </li>
+    }
+  </ul>
+  <app-pagination></app-pagination>
+} @else {
+  <p>Brak wyszukiwanego zespołu</p>
+  <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />
+}

@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/">RockBase</a>
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/bands" routerLinkActive="active">Zespoły</a></li>
+    <li><a routerLink="/albums" routerLinkActive="active">Albumy</a></li>
+    <li><a routerLink="/concerts" routerLinkActive="active">Koncerty</a></li>
+  </ul>
+  <button (click)="toggleTheme()" class="theme-toggle">
+    <img src="assets/skull-toggle.png" alt="Toggle icon" [class.dark]="isDarkMode" />
+  </button>
+</nav>

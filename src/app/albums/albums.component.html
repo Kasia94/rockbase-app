@@ -1,0 +1,26 @@
+<h2>Albumy</h2>
+<app-search
+  [placeholder]="'Szukaj albumus...'"
+  [query]="albumName()"
+  (search)="searchAlbums($event)"
+></app-search>
+@if (paginatedAlbums().length > 0) {
+  <ul>
+    @for (album of paginatedAlbums(); track album.idAlbum) {
+      <li>
+        @if (album) {
+          <div>
+            <img [src]="album.strAlbumThumb" alt="Album" />
+          </div>
+        }
+        <h3>
+          {{ album.strAlbum }}
+        </h3>
+      </li>
+    }
+  </ul>
+  <app-pagination></app-pagination>
+} @else {
+  <p>Brak wyszukiwanego albumu</p>
+  <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />
+}

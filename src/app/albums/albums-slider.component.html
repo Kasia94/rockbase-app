@@ -1,20 +1,32 @@
-<!-- <swiper-container
-  slides-per-view="4"
-  space-between="20"
-  loop="true"
-  autoplay-delay="2500"
-  pagination-clickable="true"
-  navigation="true"
->
-  @for (album of albums; track album) {
-    <swiper-slide>
-      <div class="album-card">
-        <img [src]="album.strAlbumThumb" [alt]="album.strAlbum" />
-        <p>
-          {{ album.strAlbum }} <br />
-          <small>{{ album.strAlbum }}</small>
-        </p>
+
+<div id="albumsCarousel" class="carousel slide" data-bs-ride="carousel">
+  <!-- Wskaźniki -->
+  <div class="carousel-indicators">
+    @for (album of albums; track album; let i = $index) {
+      <button type="button"
+              data-bs-target="#albumsCarousel"
+              [attr.data-bs-slide-to]="i"
+              [class.active]="i === 0">
+      </button>
+    }
+  </div>
+
+  <div class="carousel-inner">
+    @for (album of albums; track album.idAlbum; let i = $index) {
+      <div class="carousel-item" [class.active]="i === 0">
+        <img [src]="album.strAlbumThumb"
+             class="d-block w-100"
+             [alt]="album.strAlbum">
+             loading="lazy"
       </div>
-    </swiper-slide>
-  }
-</swiper-container> -->
+    }
+  </div>
+
+  <!-- Nawigacja -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#albumsCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#albumsCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>

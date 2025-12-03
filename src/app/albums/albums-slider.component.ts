@@ -5,13 +5,14 @@ import { Album } from '../models/album.model';
 
 @Component({
     selector: 'app-albums-slider',
+    standalone: true,
     imports: [],
     templateUrl: './albums-slider.component.html',
     styleUrl: 'albums-slider.component.scss'
 })
 export class AlbumsSliderComponent {
   albums: Album[] = [];
-  popularBands = ['Metallica', 'Nirvana', 'Queen', 'Pink Floyd', 'Guns N Roses'];
+  popularBands = ['Metallica',  'Nirvana', 'Queen', 'Pink Floyd'];
 
   constructor(private bandService: BandsService) {}
 

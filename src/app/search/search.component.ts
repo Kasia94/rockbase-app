@@ -2,11 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-search',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './search.component.html',
-  styleUrl: './search.component.scss',
+    selector: 'app-search',
+    imports: [FormsModule],
+    templateUrl: './search.component.html',
+    styleUrl: './search.component.scss'
 })
 export class SearchComponent {
   @Input() query: string = '';

@@ -4,11 +4,10 @@ import { Album } from '../models/album.model';
 
 
 @Component({
-  selector: 'app-albums-slider',
-  standalone: true,
-  imports: [],
-  templateUrl: './albums-slider.component.html',
-  styleUrl: 'albums-slider.component.scss',
+    selector: 'app-albums-slider',
+    imports: [],
+    templateUrl: './albums-slider.component.html',
+    styleUrl: 'albums-slider.component.scss'
 })
 export class AlbumsSliderComponent {
   albums: Album[] = [];

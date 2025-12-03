@@ -7,11 +7,10 @@ import { NgFor } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-bands-list',
-  standalone: true,
-  imports: [PaginationComponent, SearchComponent],
-  templateUrl: './bands-list.component.html',
-  styleUrl: './bands-list.component.scss',
+    selector: 'app-bands-list',
+    imports: [PaginationComponent, SearchComponent],
+    templateUrl: './bands-list.component.html',
+    styleUrl: './bands-list.component.scss'
 })
 export class BandsListComponent {
   private router = inject(Router);

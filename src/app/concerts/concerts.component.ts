@@ -5,11 +5,10 @@ import { SearchComponent } from '../search/search.component';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-concerts',
-  standalone: true,
-  imports: [PaginationComponent, SearchComponent],
-  templateUrl: './concerts.component.html',
-  styleUrl: './concerts.component.scss',
+    selector: 'app-concerts',
+    imports: [PaginationComponent, SearchComponent],
+    templateUrl: './concerts.component.html',
+    styleUrl: './concerts.component.scss'
 })
 export class ConcertsComponent {
   private router = inject(Router);

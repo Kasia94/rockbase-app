@@ -3,10 +3,9 @@ import { AlbumsSliderComponent } from '../albums/albums-slider.component';
 
 
 @Component({
-  selector: 'app-hero',
-  standalone: true,
-  imports: [AlbumsSliderComponent],
-  templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss'],
+    selector: 'app-hero',
+    imports: [AlbumsSliderComponent],
+    templateUrl: './hero.component.html',
+    styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent {}

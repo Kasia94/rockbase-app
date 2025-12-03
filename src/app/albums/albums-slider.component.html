@@ -16,8 +16,10 @@
       <div class="carousel-item" [class.active]="i === 0">
         <img [src]="album.strAlbumThumb"
              class="d-block w-100"
-             [alt]="album.strAlbum">
+             [alt]="album.strAlbum"
+             (click)="goToAlbum(album)"
              loading="lazy"
+             >
       </div>
     }
   </div>

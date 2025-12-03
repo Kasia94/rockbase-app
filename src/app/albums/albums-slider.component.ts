@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BandsService } from '../services/bands.service';
 import { Album } from '../models/album.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { Album } from '../models/album.model';
     styleUrl: 'albums-slider.component.scss'
 })
 export class AlbumsSliderComponent {
+  private _router = inject(Router);
   albums: Album[] = [];
   popularBands = ['Metallica',  'Nirvana', 'Queen', 'Pink Floyd'];
 
@@ -22,5 +24,10 @@ export class AlbumsSliderComponent {
         this.albums = [...this.albums, ...data.albums];
       })
     );
+  }
+
+  goToAlbum(album: Album) {
+    console.log('fff');
+    this._router.navigate(['/albums', album.idAlbum]);
   }
 }

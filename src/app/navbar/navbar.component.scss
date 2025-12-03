@@ -7,8 +7,7 @@
   left: 0;
   width: 100%;
   height: 70px;
-  background-color: rgba(var(--color-bg), 0.5);
-
+  background-color: var(--color-bg-alpha);
   color:  var(--color-text);
   display: flex;
   align-items: center;
@@ -20,7 +19,6 @@
 
 .logo a {
   font-size: 24px;
-  // font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
   font-family: $font-primary;

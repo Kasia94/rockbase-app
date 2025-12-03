@@ -1,22 +1,7 @@
-// /* Light mode */
-// body {
-//   background-color: #fff;
-//   color: #000;
-// }
 
-// /* Dark mode */
-// body.dark-mode {
-//   background-color: #121212;
-//   color: #fff;
-// }
-
-// /* Navbar w dark mode */
-// body.dark-mode .navbar {
-//   background-color: #222;
-//   color: #fff;
-// }
 :root {
   --color-bg: #f9f9f9;
+  --color-bg-alpha: #f9f9f9ee;
   --color-surface: #ffffff;
   --color-primary: #e30613;
   --color-accent: #ffcc00;
@@ -27,6 +12,7 @@
 
 body.dark-mode {
   --color-bg: #0d0d0d;
+  --color-bg-alpha: #0d0d0dcc;
   --color-surface: #1a1a1a;
   --color-primary: #e30613;
   --color-accent: #ffcc00;

@@ -18,14 +18,13 @@
   -webkit-text-fill-color: transparent;
 }
 
-//  Mixin: Flex center
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-//  Mixin: Rockowy box-shadow
 @mixin rock-shadow {
   box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
 }

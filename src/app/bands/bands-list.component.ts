@@ -37,25 +37,6 @@ export class BandsListComponent {
       }
     });
   }
-  // constructor() {
-  //   this.route.queryParams.subscribe((params) => {
-  //     const name = params['band'];
-  //     if (name) {
-  //       this.bandName.set(name);
-  //     }
-  //     console.log(this.bandName());
-  //   });
-
-  //   effect(() => {
-  //     const name = this.bandName();
-  //     if (name) {
-  //       this.bandService.searchBand(name).subscribe((result) => {
-  //         this.bandSignal.set(result);
-  //         this.page.set(1);
-  //       });
-  //     }
-  //   });
-  // }
 
   paginatedBands = computed(() => {
     const bands = this.bandSignal().artists || [];

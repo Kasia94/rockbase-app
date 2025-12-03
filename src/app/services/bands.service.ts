@@ -34,7 +34,7 @@ export class BandsService {
 
   getAlbums(name: string) {
     return this.http.get<{ album: Album[] }>(`${this.apiUrl}/searchalbum.php?s=${name}`).pipe(
-      map((response) => ({ albums: response.album || [] })), // zamieniamy na { albums: [...] }
+      map((response) => ({ albums: response.album || [] })), 
       catchError((error) => {
         console.error('Błąd Api:', error);
         return of({ albums: [] });

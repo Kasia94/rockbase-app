@@ -6,7 +6,6 @@
   padding: 0;
 }
 
-// Body
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -15,7 +14,6 @@ body {
   font-size: 16px;
 }
 
-// Nagłówki
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-primary;
   color: var(--color-primary);
@@ -30,7 +28,6 @@ h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
 
-// Linki
 a {
   color: var(--color-accent);
   text-decoration: none;
@@ -41,7 +38,6 @@ a {
   }
 }
 
-// Przyciski (bazowy styl)
 button {
   font-family: $font-primary;
   background-color: var(--color-primary);
@@ -57,7 +53,6 @@ button {
   }
 }
 
-// Obrazy
 img {
   max-width: 100%;
   height: auto;

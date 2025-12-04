@@ -10,6 +10,7 @@ export const routes: Routes = [{
   component: AppComponent},
   { path: '', component: HeroComponent },
   { path: 'bands', component: BandsListComponent },
+  { path: 'bands/:id', component: BandsListComponent },
   { path: 'concerts', component: ConcertsComponent },
   { path: 'albums', component: AlbumsComponent },
   { path: 'albums/:id', component: AlbumsComponent }

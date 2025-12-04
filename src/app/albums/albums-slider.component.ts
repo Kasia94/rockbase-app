@@ -27,7 +27,6 @@ export class AlbumsSliderComponent {
   }
 
   goToAlbum(album: Album) {
-    console.log('fff');
     this._router.navigate(['/albums', album.idAlbum]);
   }
 }

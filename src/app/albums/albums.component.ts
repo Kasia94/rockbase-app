@@ -26,13 +26,19 @@ export class AlbumsComponent {
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       const name = params['album'];
+      const idAlbum = this.route.snapshot.paramMap.get('id');
       if (name) {
         this.albumName.set(name);
         this.bandService.getAlbums(name).subscribe((result) => {
           this.albumSignal.set(result);
           this.page.set(1);
         });
-      } else {
+      } else if(idAlbum){
+this.bandService.getAlbumById(idAlbum).subscribe((result) => {
+  this.albumSignal.set(result);
+})
+      }
+       else {
         this.albumName.set('');
         this.albumSignal.set({ albums: [] });
       }

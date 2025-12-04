@@ -22,16 +22,23 @@ export class BandsListComponent {
 
   bandSignal = signal<{ artists: any[] }>({ artists: [] });
 
+
+
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       const name = params['band'];
+      const bandId = this.route.snapshot.paramMap.get('id');
       if (name) {
         this.bandName.set(name);
         this.bandService.searchBand(name).subscribe((result) => {
           this.bandSignal.set(result);
           this.page.set(1);
         });
-      } else {
+      } else if(bandId){
+this.bandService.getBandById(bandId).subscribe((result) => {
+  this.bandSignal.set(result);
+})}
+       else {
         this.bandName.set('');
         this.bandSignal.set({ artists: [] });
       }

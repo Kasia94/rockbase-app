@@ -9,13 +9,16 @@
     @for (band of paginatedBands(); track band.idArtist) {
       <li>
         @if (band.strArtistBanner) {
-          <div>
+  
             <img [src]="band.strArtistBanner" alt="Artist Banner" />
-          </div>
+        
         }
         <h3>
           {{ band.strArtist }}
         </h3>
+        <p class="year"><strong>Rok założenia:</strong> {{ band.intFormedYear }}</p>
+        <p class="country"><strong>Kraj:</strong> {{ band.strCountry }}</p>
+        <p>{{ band.strBiographyPL || band.strBiographyEN }}</p>
       </li>
     }
   </ul>

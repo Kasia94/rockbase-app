@@ -30,10 +30,10 @@ export class BandOfTheDayComponent implements OnInit {
     const randomId = this.artistIds[Math.floor(Math.random() * this.artistIds.length)];
 
     this.bandService.getBandById(randomId).subscribe({
-      next: (res) => {
+      next: (res) => {      
         this.artist = res.artists?.[0];
         this.loading = false;
-      },
+      },  
       error: () => {
         this.error = 'Nie udało się pobrać kapeli na dziś.';
         this.loading = false;

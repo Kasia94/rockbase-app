@@ -1,11 +1,11 @@
 <h2>Zespoły</h2>
-<app-search
+<app-search class="mb-5 search"
   [placeholder]="'Szukaj zespołu...'"
   [query]="bandName()"
   (search)="searchBand($event)"
 ></app-search>
 @if (paginatedBands().length > 0) {
-  <ul>
+  <ul class="mt-5">
     @for (band of paginatedBands(); track band.idArtist) {
       <li>
         @if (band.strArtistBanner) {
@@ -22,7 +22,7 @@
       </li>
     }
   </ul>
-  <app-pagination></app-pagination>
+  <app-pagination class="pagination"></app-pagination>
 } @else {
   <p>Brak wyszukiwanego zespołu</p>
   <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />

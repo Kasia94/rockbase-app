@@ -19,8 +19,8 @@ export class BandOfTheDayComponent implements OnInit {
   private router = inject(Router);
 
   // lista ID artystów do losowania
-  private artistIds = ['111279', '111311', '111304', '111289', '111283', '111291', '111255', '111239', '111280', '111300', '111297', '111298', '111310', '111307'
-    ,'111309', '111313', '111315', '111282', '119851', '112030', '112029'
+  private artistIds = ['111279', '111311', '111289', '111283', '111255', '111239', '111280', '111297', '111298', '111310', '111307'
+    ,'111309', '111315', '119851', '112030', '112029'
      ]; 
 
   constructor(private bandService: BandsService) {}

@@ -1,0 +1,9 @@
+<div class="track-player">
+  <h3> Rock Shuffle</h3>
+  <p><strong>{{ track?.title }}</strong> – {{ track?.artist }}</p>
+   <button class="m-3" 
+   (click)="openExternal(track?.externalUrl)">
+     Otwórz w serwisie muzycznym
+   </button>
+  <button (click)="loadRandomTrack()">Losuj kolejny</button>
+</div>

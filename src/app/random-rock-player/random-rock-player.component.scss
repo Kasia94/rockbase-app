@@ -1,0 +1,24 @@
+.track-player {
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  margin: 2rem;
+  max-width: 500px;
+  box-shadow: 0 8px 16px rgba(238, 45, 45, 0.6);
+  width: 100%;
+}
+button {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:first-of-type {
+background-color: rgb(255, 159, 14) ;
+}
+

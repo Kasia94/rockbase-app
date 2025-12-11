@@ -1,8 +1,9 @@
-import { ConcertsService } from './../services/concerts.service';
+import {  MusicService } from '../services/music.service';
 import { Component, computed, inject, signal } from '@angular/core';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { SearchComponent } from '../search/search.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Concert } from '../models/concert.model';
 
 @Component({
     selector: 'app-concerts',
@@ -13,13 +14,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ConcertsComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-  private bandService = inject(ConcertsService);
+  private bandService = inject(MusicService);
 
   page = signal(1);
   pageSize = signal(5);
   concertName = signal('');
 
-  concertSignal = signal<{ events: any[] }>({ events: [] });
+  concertSignal = signal<{ events: Concert[] }>({ events: [] });
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {

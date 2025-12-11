@@ -5,4 +5,6 @@ export interface Album {
   intYearReleased: string;
   strGenre: string;
   strAlbumThumb: string;
+  strReleaseFormat: string;
+  strLabel: string;
 }

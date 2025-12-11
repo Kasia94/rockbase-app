@@ -8,18 +8,15 @@
   <ul>
     @for (concert of paginatedConcerts(); track concert.id) {
       <li>
-        @if (concert.strArtistBanner) {
-          <div>
-            <img [src]="concert.strArtistBanner" alt="Artist Banner" />
-          </div>
+        @if (concert.name) {
         }
         <h3>
-          {{ concert.name }}
+        {{concert.type + ' ' + concert.name }}
         </h3>
       </li>
     }
   </ul>
-  <app-pagination></app-pagination>
+  <app-pagination class="pagination"></app-pagination>
 } @else {
   <p>Brak wyszukiwanego koncertu</p>
   <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />

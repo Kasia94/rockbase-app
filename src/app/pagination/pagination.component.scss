@@ -1,8 +1,10 @@
 .pagination {
+  bottom: 0;
+  margin: 1.5rem;
   display: flex;
   gap: 10px;
-  margin-top: 20px;
   align-items: center;
+  justify-self: end;
 
   button {
     padding: 6px 12px;

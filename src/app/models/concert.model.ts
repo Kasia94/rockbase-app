@@ -3,9 +3,23 @@ export interface Concert {
   type: string;                 
   score?: number;                
   name: string;                  
-  lifeSpan?: {                    
+  ["life-span"]?: {                    
     begin?: string;              
     end?: string;                 
   };
-  time?: string;      
-}
+  time?: string;   
+  relations: {
+    type: string;
+    artist?: {
+      id: string;
+      name: string;
+      sortName?: string;
+      disambiguation?: string;
+    };
+    place?: {
+      id: string;
+      name: string;
+    };
+  }[];
+} 
+

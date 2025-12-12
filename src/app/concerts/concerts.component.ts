@@ -17,7 +17,7 @@ export class ConcertsComponent {
   private bandService = inject(MusicService);
 
   page = signal(1);
-  pageSize = signal(5);
+  pageSize = signal(2);
   concertName = signal('');
 
   concertSignal = signal<{ events: Concert[] }>({ events: [] });

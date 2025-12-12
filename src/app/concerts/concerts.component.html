@@ -13,10 +13,34 @@
         <h3>
         {{concert.type + ' ' + concert.name }}
         </h3>
+        <div class="row">
+          <div class="col">
+            <p>Data: {{concert['life-span']?.begin}}</p>
+          </div>
+        @if(concert.relations.length > 0){
+          <ul class="col">
+            @for (rel of concert.relations; track $index ){
+              @if(rel.artist){
+              <li>
+                {{rel.artist?.name}}
+              </li>
+              }
+            }
+          </ul>
+        } @else {
+        <p class="col">
+          Brak artystów do wyświetlenia
+        </p>
+        }
+      </div>
       </li>
     }
   </ul>
-  <app-pagination class="pagination"></app-pagination>
+  <app-pagination 
+  class="pagination"
+  [page]="page()"
+  [pageSize]="pageSize()"
+  ></app-pagination>
 } @else {
   <p>Brak wyszukiwanego koncertu</p>
   <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />

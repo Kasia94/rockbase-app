@@ -31,15 +31,14 @@ main {
 
 .row {
   display: flex;
-  align-items: center;  
+  align-items: center;
   margin: 1rem 0;
 }
 
 .col {
-  flex: 1;             
+  flex: 1;
   padding: 0.5rem;
   flex-direction: column;
   align-self: center;
-  justify-content: center; 
+  justify-content: center;
 }
-

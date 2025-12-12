@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicService } from '../services/music.service';
 import { RockTrack } from '../models/track.model';
-import { SafeUrlPipe } from "../safe-url.pipe";
+import { SafeUrlPipe } from '../safe-url.pipe';
 
 @Component({
   selector: 'app-random-rock-player',
   templateUrl: './random-rock-player.component.html',
   styleUrls: ['./random-rock-player.component.scss'],
-  imports: [SafeUrlPipe]
+  imports: [SafeUrlPipe],
 })
 export class RandomRockPlayerComponent implements OnInit {
-  track: RockTrack| null = null;
+  track: RockTrack | null = null;
 
   constructor(private musicService: MusicService) {}
 
@@ -19,7 +19,7 @@ export class RandomRockPlayerComponent implements OnInit {
   }
 
   loadRandomTrack() {
-    this.musicService.getRandomRockTrack().subscribe(track => {
+    this.musicService.getRandomRockTrack().subscribe((track) => {
       this.track = track;
     });
   }

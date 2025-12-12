@@ -1,4 +1,4 @@
-import {  MusicService } from '../services/music.service';
+import { MusicService } from '../services/music.service';
 import { Component, computed, inject, signal } from '@angular/core';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { SearchComponent } from '../search/search.component';
@@ -6,10 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Concert } from '../models/concert.model';
 
 @Component({
-    selector: 'app-concerts',
-    imports: [PaginationComponent, SearchComponent],
-    templateUrl: './concerts.component.html',
-    styleUrl: './concerts.component.scss'
+  selector: 'app-concerts',
+  imports: [PaginationComponent, SearchComponent],
+  templateUrl: './concerts.component.html',
+  styleUrl: './concerts.component.scss',
 })
 export class ConcertsComponent {
   private router = inject(Router);

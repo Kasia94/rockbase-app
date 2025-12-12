@@ -7,10 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BandsService } from '../services/bands.service';
 
 @Component({
-    selector: 'app-albums',
-    imports: [PaginationComponent, SearchComponent],
-    templateUrl: './albums.component.html',
-    styleUrl: './albums.component.scss'
+  selector: 'app-albums',
+  imports: [PaginationComponent, SearchComponent],
+  templateUrl: './albums.component.html',
+  styleUrl: './albums.component.scss',
 })
 export class AlbumsComponent {
   private router = inject(Router);
@@ -33,12 +33,11 @@ export class AlbumsComponent {
           this.albumSignal.set(result);
           this.page.set(1);
         });
-      } else if(idAlbum){
-this.bandService.getAlbumById(idAlbum).subscribe((result) => {
-  this.albumSignal.set(result);
-})
-      }
-       else {
+      } else if (idAlbum) {
+        this.bandService.getAlbumById(idAlbum).subscribe((result) => {
+          this.albumSignal.set(result);
+        });
+      } else {
         this.albumName.set('');
         this.albumSignal.set({ albums: [] });
       }

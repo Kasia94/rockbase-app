@@ -1,5 +1,6 @@
 <h2>Zespoły</h2>
-<app-search class="mb-5 search"
+<app-search
+  class="mb-5 search"
   [placeholder]="'Szukaj zespołu...'"
   [query]="bandName()"
   (search)="searchBand($event)"
@@ -9,9 +10,7 @@
     @for (band of paginatedBands(); track band.idArtist) {
       <li>
         @if (band.strArtistBanner) {
-  
-            <img class="baner" [src]="band.strArtistBanner" alt="Artist Banner" />
-        
+          <img class="baner" [src]="band.strArtistBanner" alt="Artist Banner" />
         }
         <h3>
           {{ band.strArtist }}

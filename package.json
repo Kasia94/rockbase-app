@@ -10,7 +10,9 @@
     "serve:ssr:rock-base": "node dist/rock-base/server/server.mjs",
     "dev": "vite",
     "vite:build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts,.html",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\""
   },
   "private": true,
   "dependencies": {

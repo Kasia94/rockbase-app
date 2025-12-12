@@ -3,33 +3,31 @@
   list-style: none;
 }
 
-ul{
-list-style: none;
+ul {
+  list-style: none;
 }
 
-h2, h3 {
+h2,
+h3 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  text-align: center; 
-
+  text-align: center;
 }
 
 .baner {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 .year,
-.country, 
+.country,
 .search,
 .pagination {
-  text-align: center; 
+  text-align: center;
 }
-
 
 p {
   line-height: 1.5;
   margin: 0.5rem 0;
 }
-

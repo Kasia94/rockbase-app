@@ -8,9 +8,8 @@ describe('RandomBandComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RandomBandComponent]
-    })
-    .compileComponents();
+      imports: [RandomBandComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RandomBandComponent);
     component = fixture.componentInstance;

@@ -4,31 +4,28 @@
   align-items: center;
 }
 
-ul{
-list-style: none;
+ul {
+  list-style: none;
 }
 
 h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  text-align: center; 
-
+  text-align: center;
 }
 
-h3{
-text-align: left;
+h3 {
+  text-align: left;
 }
 
-img{
+img {
   max-width: 50%;
 }
 
-
 .search,
 .pagination {
-  text-align: center; 
+  text-align: center;
 }
-
 
 p {
   line-height: 1.5;
@@ -37,27 +34,27 @@ p {
 
 .row {
   display: flex;
-  align-items: center;  
+  align-items: center;
   margin: 1rem 0;
 }
 
 .col {
-  flex: 1;             
+  flex: 1;
   padding: 0.5rem;
 }
 
 .img-col img {
-  width: 100%;           
-  max-width: 450px;     
+  width: 100%;
+  max-width: 450px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 .text-col {
   display: flex;
   flex-direction: column;
   align-self: center;
-  justify-content: center; 
+  justify-content: center;
 }
 .side-decor {
   position: fixed;
@@ -68,27 +65,30 @@ p {
   opacity: 0.5;
   pointer-events: none;
   background-image: url('/assets/pattern.png');
-  background-repeat: repeat-y;   
-  background-size: 100%;     
+  background-repeat: repeat-y;
+  background-size: 100%;
   transform: scaleY(-1);
   transform: rotateX('angle');
   z-index: -5;
 }
-  .left { left: 0; 
-    transform: scaleY(-1);
+.left {
+  left: 0;
+  transform: scaleY(-1);
+}
+.right {
+  right: 0;
+}
+
+@media (max-width: 868px) {
+  .side-decor {
+    display: none;
   }
-  .right { right: 0;
-   }
-  
-  @media (max-width: 868px) {
-    .side-decor { display: none; }
-  }
-  .pagination {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    gap: 10px;
-    padding: 0.5rem;
-  }
-  
+}
+.pagination {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  gap: 10px;
+  padding: 0.5rem;
+}

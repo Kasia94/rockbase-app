@@ -1,13 +1,13 @@
 export interface Concert {
-  id: string;                    
-  type: string;                 
-  score?: number;                
-  name: string;                  
-  ["life-span"]?: {                    
-    begin?: string;              
-    end?: string;                 
+  id: string;
+  type: string;
+  score?: number;
+  name: string;
+  ['life-span']?: {
+    begin?: string;
+    end?: string;
   };
-  time?: string;   
+  time?: string;
   relations: {
     type: string;
     artist?: {
@@ -21,5 +21,4 @@ export interface Concert {
       name: string;
     };
   }[];
-} 
-
+}

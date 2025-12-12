@@ -3,18 +3,17 @@ import { BandsService } from '../services/bands.service';
 import { Album } from '../models/album.model';
 import { Router } from '@angular/router';
 
-
 @Component({
-    selector: 'app-albums-slider',
-    standalone: true,
-    imports: [],
-    templateUrl: './albums-slider.component.html',
-    styleUrl: 'albums-slider.component.scss'
+  selector: 'app-albums-slider',
+  standalone: true,
+  imports: [],
+  templateUrl: './albums-slider.component.html',
+  styleUrl: 'albums-slider.component.scss',
 })
 export class AlbumsSliderComponent {
   private _router = inject(Router);
   albums: Album[] = [];
-  popularBands = ['Metallica',  'Nirvana', 'Queen', 'Pink Floyd'];
+  popularBands = ['Metallica', 'Nirvana', 'Queen', 'Pink Floyd'];
 
   constructor(private bandService: BandsService) {}
 

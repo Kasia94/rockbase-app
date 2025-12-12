@@ -7,10 +7,10 @@ import { NgFor } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    selector: 'app-bands-list',
-    imports: [PaginationComponent, SearchComponent],
-    templateUrl: './bands-list.component.html',
-    styleUrl: './bands-list.component.scss'
+  selector: 'app-bands-list',
+  imports: [PaginationComponent, SearchComponent],
+  templateUrl: './bands-list.component.html',
+  styleUrl: './bands-list.component.scss',
 })
 export class BandsListComponent {
   private router = inject(Router);
@@ -22,8 +22,6 @@ export class BandsListComponent {
 
   bandSignal = signal<{ artists: any[] }>({ artists: [] });
 
-
-
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       const name = params['band'];
@@ -34,11 +32,11 @@ export class BandsListComponent {
           this.bandSignal.set(result);
           this.page.set(1);
         });
-      } else if(bandId){
-this.bandService.getBandById(bandId).subscribe((result) => {
-  this.bandSignal.set(result);
-})}
-       else {
+      } else if (bandId) {
+        this.bandService.getBandById(bandId).subscribe((result) => {
+          this.bandSignal.set(result);
+        });
+      } else {
         this.bandName.set('');
         this.bandSignal.set({ artists: [] });
       }

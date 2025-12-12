@@ -6,10 +6,10 @@
     <div>{{ error }}</div>
   } @else if (artist) {
     <strong>{{ artist.strArtist }}</strong>
-      @if(artist.strArtistThumb){
+    @if (artist.strArtistThumb) {
       <img class="mb-3" [src]="artist.strArtistThumb" [alt]="artist" />
-      }
-      
-      <button (click)="onPoznaj()">Poznaj</button>
+    }
+
+    <button (click)="onPoznaj()">Poznaj</button>
   }
 </section>

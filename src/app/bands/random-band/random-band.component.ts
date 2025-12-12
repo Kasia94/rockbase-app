@@ -9,35 +9,49 @@ import { Band } from '../../models/band.model';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './random-band.component.html',
-  styleUrls: ['./random-band.component.scss']
+  styleUrls: ['./random-band.component.scss'],
 })
 export class BandOfTheDayComponent implements OnInit {
   artist?: Band;
   loading = true;
   error?: string;
-  
+
   private router = inject(Router);
 
   // lista ID artystów do losowania
-  private artistIds = ['111279', '111311', '111289', '111283', '111255', '111239', '111280', '111297', '111298', '111310', '111307'
-    ,'111309', '111315', '119851', '112030', '112029'
-     ]; 
+  private artistIds = [
+    '111279',
+    '111311',
+    '111289',
+    '111283',
+    '111255',
+    '111239',
+    '111280',
+    '111297',
+    '111298',
+    '111310',
+    '111307',
+    '111309',
+    '111315',
+    '119851',
+    '112030',
+    '112029',
+  ];
 
   constructor(private bandService: BandsService) {}
-
 
   ngOnInit(): void {
     const randomId = this.artistIds[Math.floor(Math.random() * this.artistIds.length)];
 
     this.bandService.getBandById(randomId).subscribe({
-      next: (res) => {      
+      next: (res) => {
         this.artist = res.artists?.[0];
         this.loading = false;
-      },  
+      },
       error: () => {
         this.error = 'Nie udało się pobrać kapeli na dziś.';
         this.loading = false;
-      }
+      },
     });
   }
 

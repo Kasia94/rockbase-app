@@ -21,30 +21,33 @@
     max-width: 600px;
     justify-self: center;
     border: none;
-  
   }
   .side-decor {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 370px;
-  height: 100%;
-  opacity: 0.5;
-  pointer-events: none;
-  background-image: url('/assets/pattern.png');
-  background-repeat: repeat-y;   
-  background-size: 100%;     
-  transform: scaleY(-1);
-  transform: rotateX('angle');
-  z-index: -5;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 370px;
+    height: 100%;
+    opacity: 0.5;
+    pointer-events: none;
+    background-image: url('/assets/pattern.png');
+    background-repeat: repeat-y;
+    background-size: 100%;
+    transform: scaleY(-1);
+    transform: rotateX('angle');
+    z-index: -5;
   }
-  .left { left: 0; 
+  .left {
+    left: 0;
     transform: scaleY(-1);
   }
-  .right { right: 0;
-   }
-  
+  .right {
+    right: 0;
+  }
+
   @media (max-width: 868px) {
-    .side-decor { display: none; }
+    .side-decor {
+      display: none;
+    }
   }
 }

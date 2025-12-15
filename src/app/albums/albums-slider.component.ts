@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class AlbumsSliderComponent {
   private _router = inject(Router);
   albums: Album[] = [];
-  popularBands = ['Metallica', 'Nirvana', 'Queen', 'Pink Floyd'];
+  popularBands = ['Nirvana', 'Queen', 'Pink Floyd', 'Led Zeppelin', 'Radiohead', 'Pearl Jam', 'U2'];
 
   constructor(private bandService: BandsService) {}
 

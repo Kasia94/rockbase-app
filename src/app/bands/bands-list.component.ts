@@ -65,4 +65,8 @@ export class BandsListComponent {
       this.bandSignal.set({ artists: [] });
     }
   }
+  onPageChange(newPage: number) {
+    this.page.set(newPage);
+  }
+  totalItems = computed(() => this.bandSignal().artists?.length);
 }

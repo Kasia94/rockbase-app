@@ -17,7 +17,7 @@ export class ConcertsComponent {
   private bandService = inject(MusicService);
 
   page = signal(1);
-  pageSize = signal(2);
+  pageSize = signal(3);
   concertName = signal('');
 
   concertSignal = signal<{ events: Concert[] }>({ events: [] });
@@ -60,4 +60,9 @@ export class ConcertsComponent {
       this.concertSignal.set({ events: [] });
     }
   }
+
+  onPageChange(newPage: number) {
+    this.page.set(newPage);
+  }
+  totalItems = computed(() => this.concertSignal().events?.length | 0);
 }

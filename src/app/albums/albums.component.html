@@ -28,7 +28,13 @@
     </ul>
   </div>
   @if (paginatedAlbums().length > 1) {
-    <app-pagination class="pagination"></app-pagination>
+    <app-pagination
+      class="pagination"
+      [page]="page()"
+      [pageSize]="pageSize()"
+      [totalItems]="totalItems()"
+      (pageChange)="onPageChange($event)"
+    ></app-pagination>
   }
   <div class="side-decor right"></div>
 } @else {

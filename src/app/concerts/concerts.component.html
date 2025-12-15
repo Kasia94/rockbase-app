@@ -5,7 +5,7 @@
   (search)="searchConcert($event)"
 ></app-search>
 @if (paginatedConcerts().length) {
-  <ul>
+  <ul class="main-content">
     @for (concert of paginatedConcerts(); track concert.id) {
       <li>
         @if (concert.name) {}
@@ -33,7 +33,13 @@
       </li>
     }
   </ul>
-  <app-pagination class="pagination" [page]="page()" [pageSize]="pageSize()"></app-pagination>
+  <app-pagination
+    class="pagination"
+    [page]="page()"
+    [pageSize]="pageSize()"
+    [totalItems]="totalItems()"
+    (pageChange)="onPageChange($event)"
+  ></app-pagination>
 } @else {
   <p>Brak wyszukiwanego koncertu</p>
   <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />

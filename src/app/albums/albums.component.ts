@@ -66,4 +66,8 @@ export class AlbumsComponent {
       this.albumSignal.set({ albums: [] });
     }
   }
+  onPageChange(newPage: number) {
+    this.page.set(newPage);
+  }
+  totalItems = computed(() => this.albumSignal().albums?.length | 0);
 }

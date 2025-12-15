@@ -21,7 +21,13 @@
       </li>
     }
   </ul>
-  <app-pagination class="pagination"></app-pagination>
+  <app-pagination
+    [page]="page()"
+    [pageSize]="pageSize()"
+    [totalItems]="totalItems()"
+    (pageChange)="onPageChange($event)"
+    class="pagination"
+  ></app-pagination>
 } @else {
   <p>Brak wyszukiwanego zespołu</p>
   <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />

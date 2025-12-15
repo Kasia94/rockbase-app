@@ -1,8 +1,14 @@
 :host {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   list-style: none;
+  min-height: 100vh;
 }
 
+.main-content {
+  flex: 1;
+}
 ul {
   list-style: none;
 }
@@ -31,10 +37,12 @@ p {
 }
 
 .pagination {
-  position: fixed;
+  // position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   gap: 10px;
   padding: 0.5rem;
+  z-index: 100;
+  // margin-top: 1.5rem;
 }

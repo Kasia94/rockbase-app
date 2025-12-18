@@ -1,38 +1,53 @@
-import eslintPluginAngular from "@angular-eslint/eslint-plugin";
-import eslintPluginTypeScript from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import prettierPlugin from "eslint-plugin-prettier";
-import prettierConfig from "eslint-config-prettier";
+import angularPlugin from '@angular-eslint/eslint-plugin';
+import angularTemplatePlugin from '@angular-eslint/eslint-plugin-template';
+import angularTemplateParser from '@angular-eslint/template-parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import prettierPlugin from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
 
 export default [
+  // Prettier config
+  prettierConfig,
+
   {
-    files: ["**/*.ts"],
+    ignores: ['.angular/**', 'dist/**', 'node_modules/**'],
+  },
+
+  // TypeScript
+  {
+    files: ['**/*.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: "./tsconfig.json",
+        project: './tsconfig.json',
         tsconfigRootDir: import.meta.dirname,
       },
     },
     plugins: {
-      "@angular-eslint": eslintPluginAngular,
-      "@typescript-eslint": eslintPluginTypeScript,
+      '@angular-eslint': angularPlugin,
+      '@typescript-eslint': tsPlugin,
       prettier: prettierPlugin,
     },
     rules: {
-      ...eslintPluginAngular.configs.recommended.rules,
-      ...eslintPluginTypeScript.configs.recommended.rules,
-      ...prettierConfig.rules,
-      "prettier/prettier": "error",
+      ...angularPlugin.configs.recommended.rules,
+      ...tsPlugin.configs.recommended.rules,
+      'prettier/prettier': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
     },
   },
+
+  // HTML templates
   {
-    files: ["**/*.html"],
+    files: ['**/*.html'],
+    languageOptions: {
+      parser: angularTemplateParser,
+    },
     plugins: {
-      "@angular-eslint/template": eslintPluginAngular,
+      '@angular-eslint/template': angularTemplatePlugin,
     },
     rules: {
-      ...eslintPluginAngular.configs["template/recommended"].rules,
+      ...angularTemplatePlugin.configs.recommended.rules,
     },
   },
 ];

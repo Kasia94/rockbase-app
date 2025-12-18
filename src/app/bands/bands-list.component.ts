@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { SearchComponent } from '../search/search.component';
@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './bands-list.component.html',
   styleUrl: './bands-list.component.scss',
 })
-export class BandsListComponent {
+export class BandsListComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private bandService = inject(BandsService);

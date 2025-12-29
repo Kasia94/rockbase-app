@@ -12,6 +12,8 @@ import { Band } from '../../models/band.model';
   styleUrls: ['./random-band.component.scss'],
 })
 export class BandOfTheDayComponent implements OnInit {
+  private bandService = inject(BandsService);
+
   artist?: Band;
   loading = true;
   error?: string;
@@ -37,8 +39,6 @@ export class BandOfTheDayComponent implements OnInit {
     '112030',
     '112029',
   ];
-
-  constructor(private bandService: BandsService) {}
 
   ngOnInit(): void {
     const randomId = this.artistIds[Math.floor(Math.random() * this.artistIds.length)];

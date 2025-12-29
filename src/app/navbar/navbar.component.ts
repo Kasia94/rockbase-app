@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../services/theme.service';
 
@@ -9,7 +9,8 @@ import { ThemeService } from '../services/theme.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private themeService: ThemeService) {}
+  private themeService = inject(ThemeService);
+
 
   toggleTheme() {
     this.themeService.toggleTheme();

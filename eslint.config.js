@@ -11,7 +11,7 @@ export default [
   prettierConfig,
 
   {
-    ignores: ['.angular/**', 'dist/**', 'node_modules/**'],
+    ignores: ['.angular/**', 'dist/**', 'node_modules/**', '.history/**'],
   },
 
   // TypeScript

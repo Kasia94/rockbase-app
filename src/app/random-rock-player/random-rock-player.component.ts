@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MusicService } from '../services/music.service';
 import { RockTrack } from '../models/track.model';
 import { SafeUrlPipe } from '../safe-url.pipe';
@@ -10,9 +10,9 @@ import { SafeUrlPipe } from '../safe-url.pipe';
   imports: [SafeUrlPipe],
 })
 export class RandomRockPlayerComponent implements OnInit {
-  track: RockTrack | null = null;
+  private musicService = inject(MusicService);
 
-  constructor(private musicService: MusicService) {}
+  track: RockTrack | null = null;
 
   ngOnInit() {
     this.loadRandomTrack();

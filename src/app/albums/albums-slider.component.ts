@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: 'albums-slider.component.scss',
 })
 export class AlbumsSliderComponent {
+  private bandService = inject(BandsService);
+
   private _router = inject(Router);
   albums: Album[] = [];
   popularBands = [
@@ -23,8 +25,6 @@ export class AlbumsSliderComponent {
     'U2',
     "Guns n' roses",
   ];
-
-  constructor(private bandService: BandsService) {}
 
   ngOnInit(): void {
     this.popularBands.forEach((band) =>

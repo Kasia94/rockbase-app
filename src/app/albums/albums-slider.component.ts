@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BandsService } from '../services/bands.service';
 import { Album } from '../models/album.model';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './albums-slider.component.html',
   styleUrl: 'albums-slider.component.scss',
 })
-export class AlbumsSliderComponent {
+export class AlbumsSliderComponent implements OnInit {
   private bandService = inject(BandsService);
 
   private _router = inject(Router);

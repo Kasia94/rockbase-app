@@ -2,7 +2,7 @@
 <app-search
   [placeholder]="'Szukaj albumus...'"
   [query]="albumName()"
-  (search)="searchAlbums($event)"
+  (searchPhrese)="searchAlbums($event)"
 ></app-search>
 
 @if (paginatedAlbums().length > 0) {

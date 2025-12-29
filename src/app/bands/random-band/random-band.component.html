@@ -1,15 +1,15 @@
-<section class="mt-5 band-of-the-day">
-  <h3>Odkrywaj</h3>
-  @if (loading) {
-    <div>Ładowanie...</div>
-  } @else if (error) {
-    <div>{{ error }}</div>
-  } @else if (artist) {
+@if (loading) {
+  <div>Ładowanie...</div>
+} @else if (error) {
+  <div>{{ error }}</div>
+} @else if (artist) {
+  <section class="mt-5 band-of-the-day">
+    <h3>Odkrywaj</h3>
     <strong>{{ artist.strArtist }}</strong>
     @if (artist.strArtistThumb) {
       <img class="mb-3" [src]="artist.strArtistThumb" [alt]="artist" />
     }
 
     <button (click)="onPoznaj()">Poznaj</button>
-  }
-</section>
+  </section>
+}

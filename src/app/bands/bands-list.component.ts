@@ -1,10 +1,11 @@
-import { Component, computed, effect, inject, signal, OnInit } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, computed, inject, signal, OnInit } from '@angular/core';
+
 import { PaginationComponent } from '../pagination/pagination.component';
 import { SearchComponent } from '../search/search.component';
 import { BandsService } from '../services/bands.service';
-import { NgFor } from '@angular/common';
+
 import { ActivatedRoute, Router } from '@angular/router';
+import { Band } from '../models/band.model';
 
 @Component({
   selector: 'app-bands-list',
@@ -20,7 +21,7 @@ export class BandsListComponent implements OnInit {
   pageSize = signal(5);
   bandName = signal('');
 
-  bandSignal = signal<{ artists: any[] }>({ artists: [] });
+  bandSignal = signal<{ artists: Band[] }>({ artists: [] });
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {

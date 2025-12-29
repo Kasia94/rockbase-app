@@ -10,9 +10,9 @@ import { FormsModule } from '@angular/forms';
 export class SearchComponent {
   @Input() query: string = '';
   @Input() placeholder: string = '';
-  @Output() search = new EventEmitter<string>();
+  @Output() searchPhrese = new EventEmitter<string>();
 
   onSearch() {
-    this.search.emit(this.query);
+    this.searchPhrese.emit(this.query);
   }
 }

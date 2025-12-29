@@ -19,7 +19,7 @@
   }
 }
 
-//  Mixin: Gradientowy tekst (metalowy efekt)
+//  Mixin: Gradientowy tekst
 @mixin gradient-text($from, $to) {
   background: linear-gradient(to right, $from, $to);
   -webkit-background-clip: text;

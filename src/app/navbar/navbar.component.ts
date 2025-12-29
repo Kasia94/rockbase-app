@@ -11,7 +11,6 @@ import { ThemeService } from '../services/theme.service';
 export class NavbarComponent {
   private themeService = inject(ThemeService);
 
-
   toggleTheme() {
     this.themeService.toggleTheme();
   }

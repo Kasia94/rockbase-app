@@ -1,5 +1,5 @@
 import { MusicService } from '../services/music.service';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { SearchComponent } from '../search/search.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Concert } from '../models/concert.model';
   templateUrl: './concerts.component.html',
   styleUrl: './concerts.component.scss',
 })
-export class ConcertsComponent {
+export class ConcertsComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private bandService = inject(MusicService);

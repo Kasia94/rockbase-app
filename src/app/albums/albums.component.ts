@@ -1,5 +1,5 @@
 import { Album } from '../models/album.model';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { PaginationComponent } from '../pagination/pagination.component';
 
 import { SearchComponent } from '../search/search.component';
@@ -12,7 +12,7 @@ import { BandsService } from '../services/bands.service';
   templateUrl: './albums.component.html',
   styleUrl: './albums.component.scss',
 })
-export class AlbumsComponent {
+export class AlbumsComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private bandService = inject(BandsService);

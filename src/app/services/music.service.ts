@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Concert } from '../models/concert.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { MBRecordingResponse, RockTrack } from '../models/track.model';
+import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,8 @@ import { MBRecordingResponse, RockTrack } from '../models/track.model';
 export class MusicService {
   private http = inject(HttpClient);
 
-  private apiUrl = 'https://musicbrainz.org/ws/2/';
-  headers = new HttpHeaders({
+  private readonly apiUrl = environment.musicbrainzApiUrl;
+  private readonly headers = new HttpHeaders({
     'User-Agent': 'RockBaseApp/1.0.0 (kontakt@twojadomena.pl)',
   });
 
@@ -28,7 +29,7 @@ export class MusicService {
         })
       );
   }
-  getRandomRockTrack() {
+  getRandomRockTrack(): Observable<RockTrack | null> {
     return this.http
       .get<MBRecordingResponse>(`${this.apiUrl}recording?query=tag:rock&fmt=json`, {
         headers: this.headers,
@@ -52,7 +53,7 @@ export class MusicService {
             artist: artist,
             album: rec.releases?.[0]?.title ?? undefined,
             duration: rec.length ?? undefined,
-            year: rec.firstrelease_date ?? undefined,
+            year: rec.firstrelease_date?.slice(0, 4) ?? undefined,
             externalUrl: externalUrl,
           };
 

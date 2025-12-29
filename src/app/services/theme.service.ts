@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import { Injectable, DOCUMENT, inject, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
@@ -8,8 +9,9 @@ export class ThemeService {
   private document = inject(DOCUMENT);
   private platformId = inject(PLATFORM_ID);
 
-  constructor() {
-    this.document.body.classList.add('dark-mode');
+  initTheme() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    this.updateTheme();
   }
 
   toggleTheme() {
@@ -19,6 +21,12 @@ export class ThemeService {
     } else {
       document.body.classList.remove('dark-mode');
     }
+  }
+
+  private updateTheme() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.document.body.classList.toggle('dark-mode', this.darkMode);
   }
 
   get isDarkMode(): boolean {

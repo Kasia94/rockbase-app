@@ -17,6 +17,7 @@ export default [
   // TypeScript
   {
     files: ['**/*.ts'],
+    ignores: ['server.ts', 'main.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -48,6 +49,23 @@ export default [
     },
     rules: {
       ...angularTemplatePlugin.configs.recommended.rules,
+    },
+  },
+  {
+    files: ['server.ts'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: './tsconfig.server.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // env: {
+      //   node: true,
+      // },
+    },
+    rules: {
+      // Node nie potrzebuje Angularowych reguł
+      '@angular-eslint/no-empty-lifecycle-method': 'off',
     },
   },
 ];

@@ -1,18 +1,15 @@
-import { Concert } from '../models/concert.model';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 import { Band } from '../models/band.model';
 import { Album } from '../models/album.model';
-import { error } from 'node:console';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BandsService {
+  private http = inject(HttpClient);
   private apiUrl = 'https://www.theaudiodb.com/api/v1/json/2';
-
-  constructor(private http: HttpClient) {}
 
   searchBand(name: string) {
     return this.http.get<{ artists: Band[] }>(`${this.apiUrl}/search.php?s=${name}`).pipe(

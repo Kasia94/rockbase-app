@@ -1,27 +1,26 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Concert } from '../models/concert.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, Observable, of } from 'rxjs';
-import { error } from 'node:console';
-import { RockTrack } from '../models/track.model';
+import { catchError, map, of } from 'rxjs';
+import { MBRecordingResponse, RockTrack } from '../models/track.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MusicService {
-  private apiUrl = 'https://musicbrainz.org/ws/2/';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'https://musicbrainz.org/ws/2/';
+  headers = new HttpHeaders({
+    'User-Agent': 'RockBaseApp/1.0.0 (kontakt@twojadomena.pl)',
+  });
 
   getConcerts(name: string) {
-    const headers = new HttpHeaders({
-      'User-Agent': 'RockBaseApp/1.0.0 (kontakt@twojadomena.pl)',
-    });
     return this.http
-      .get<{ events: any[] | null }>(`${this.apiUrl}event?query=${name}&fmt=json`)
+      .get<{ events: Concert[] | null }>(`${this.apiUrl}event?query=${name}&fmt=json`)
       .pipe(
         map((res) => {
-          return { events: res.events ?? [] } as { events: any[] };
+          return { events: res.events ?? [] } as { events: Concert[] };
         }),
         catchError((error) => {
           console.error('Błąd Api:', error);
@@ -31,9 +30,9 @@ export class MusicService {
   }
   getRandomRockTrack() {
     return this.http
-      .get<{
-        recordings: any[];
-      }>(`${this.apiUrl}recording?query=tag:rock&fmt=json`, { headers: new HttpHeaders({ 'User-Agent': 'RockBaseApp/1.0.0 (kontakt@twojadomena.pl)' }) })
+      .get<MBRecordingResponse>(`${this.apiUrl}recording?query=tag:rock&fmt=json`, {
+        headers: this.headers,
+      })
       .pipe(
         map((res) => {
           const recordings = res.recordings ?? [];
@@ -58,6 +57,10 @@ export class MusicService {
           };
 
           return track;
+        }),
+        catchError((error) => {
+          console.error('Błąd API:', error);
+          return of(null);
         })
       );
   }

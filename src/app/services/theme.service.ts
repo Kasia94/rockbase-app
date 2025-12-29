@@ -1,13 +1,15 @@
-import { Inject, Injectable, DOCUMENT } from '@angular/core';
+import { Injectable, DOCUMENT, inject, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
   private darkMode = true;
+  private document = inject(DOCUMENT);
+  private platformId = inject(PLATFORM_ID);
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    document.body.classList.add('dark-mode');
+  constructor() {
+    this.document.body.classList.add('dark-mode');
   }
 
   toggleTheme() {

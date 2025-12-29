@@ -21,7 +21,7 @@
               @for (rel of concert.relations; track $index) {
                 @if (rel.artist) {
                   <li>
-                    {{ rel.artist?.name }}
+                    {{ rel.artist.name }}
                   </li>
                 }
               }

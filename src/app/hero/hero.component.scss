@@ -12,15 +12,19 @@
   background-color: var(--color-bg);
   color: var(--color-text);
 
-  @include respond-to(md) {
-    flex-direction: column;
-    text-align: center;
-  }
-
   &__image img {
+    width: 100%;
     max-width: 600px;
     justify-self: center;
     border: none;
+
+    @include respond-to(md) {
+      max-width: 90%;
+    }
+
+    @include respond-to(md) {
+      max-width: 70%;
+    }
   }
   .side-decor {
     position: fixed;
@@ -34,7 +38,6 @@
     background-repeat: repeat-y;
     background-size: 100%;
     transform: scaleY(-1);
-    transform: rotateX('angle');
     z-index: -5;
   }
   .left {
@@ -45,7 +48,7 @@
     right: 0;
   }
 
-  @media (max-width: 868px) {
+  @include respond-to(lg) {
     .side-decor {
       display: none;
     }

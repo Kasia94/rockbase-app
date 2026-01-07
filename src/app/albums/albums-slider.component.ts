@@ -1,7 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BandsService } from '../services/bands.service';
 import { Album } from '../models/album.model';
 import { Router } from '@angular/router';
+import { forkJoin, map } from 'rxjs';
 
 @Component({
   selector: 'app-albums-slider',
@@ -12,9 +13,13 @@ import { Router } from '@angular/router';
 })
 export class AlbumsSliderComponent implements OnInit {
   private bandService = inject(BandsService);
-
   private _router = inject(Router);
-  albums: Album[] = [];
+
+  loading = signal(true);
+  error = signal<string | null>(null);
+
+  albums = signal<Album[]>([]);
+
   popularBands = [
     'Nirvana',
     'Queen',
@@ -27,11 +32,20 @@ export class AlbumsSliderComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.popularBands.forEach((band) =>
-      this.bandService.getAlbums(band).subscribe((data) => {
-        this.albums = [...this.albums, ...data.albums];
-      })
+    const requests = this.popularBands.map((band) =>
+      this.bandService.getAlbums(band).pipe(map((res) => res.albums || []))
     );
+
+    forkJoin(requests).subscribe({
+      next: (results) => {
+        this.albums.set(results.flat());
+        this.loading.set(false);
+      },
+      error: () => {
+        console.error('Nie udało się pobrać albumów');
+        this.loading.set(false);
+      },
+    });
   }
 
   goToAlbum(album: Album) {

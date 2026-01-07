@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { BandsService } from '../../services/bands.service';
 import { Band } from '../../models/band.model';
+import { catchError, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-random-band',
@@ -13,12 +14,12 @@ import { Band } from '../../models/band.model';
 })
 export class BandOfTheDayComponent implements OnInit {
   private bandService = inject(BandsService);
-
-  artist?: Band;
-  loading = true;
-  error?: string;
-
   private router = inject(Router);
+
+  artist = signal<Band | undefined>(undefined);
+  error = signal<string | undefined>(undefined);
+
+  loading = computed(() => !this.artist() && !this.error());
 
   // lista ID artystów do losowania
   private artistIds = [
@@ -43,21 +44,21 @@ export class BandOfTheDayComponent implements OnInit {
   ngOnInit(): void {
     const randomId = this.artistIds[Math.floor(Math.random() * this.artistIds.length)];
 
-    this.bandService.getBandById(randomId).subscribe({
-      next: (res) => {
-        this.artist = res.artists?.[0];
-        this.loading = false;
-      },
-      error: () => {
-        this.error = 'Nie udało się pobrać kapeli na dziś.';
-        this.loading = false;
-      },
-    });
+    this.bandService
+      .getBandById(randomId)
+      .pipe(
+        map((res) => res.artists?.[0]),
+        catchError(() => {
+          this.error.set('Nie udało się pobrać kapeli na dziś.');
+          return of(undefined);
+        })
+      )
+      .subscribe((artist) => this.artist.set(artist));
   }
 
   onPoznaj(): void {
-    if (this.artist?.idArtist) {
-      this.router.navigate(['/bands', this.artist.idArtist]);
+    if (this.artist()?.idArtist) {
+      this.router.navigate(['/bands', this.artist()?.idArtist]);
     }
   }
 }

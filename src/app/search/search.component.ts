@@ -8,11 +8,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './search.component.scss',
 })
 export class SearchComponent {
-  @Input() query: string = '';
   @Input() placeholder: string = '';
-  @Output() searchPhrese = new EventEmitter<string>();
+  @Output() searchPhrase = new EventEmitter<string>();
+
+  query = '';
 
   onSearch() {
-    this.searchPhrese.emit(this.query);
+    const value = this.query.trim();
+    if (!value) return;
+
+    this.searchPhrase.emit(value);
   }
 }

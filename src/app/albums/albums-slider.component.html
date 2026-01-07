@@ -1,46 +1,52 @@
 <h3>Popularne</h3>
-<div id="albumsCarousel" class="carousel slide" data-bs-ride="carousel">
-  <!-- Wskaźniki -->
-  <div class="carousel-indicators">
-    @for (album of albums; track album; let i = $index) {
-      <button
-        type="button"
-        data-bs-target="#albumsCarousel"
-        [attr.data-bs-slide-to]="i"
-        [class.active]="i === 0"
-      ></button>
-    }
-  </div>
+@if (loading()) {
+  <div>Ładowanie albumów...</div>
+} @else if (error()) {
+  <div>{{ error() }}</div>
+} @else if (albums().length > 0) {
+  <div id="albumsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- Wskaźniki -->
+    <div class="carousel-indicators">
+      @for (album of albums(); track album.idAlbum; let i = $index) {
+        <button
+          type="button"
+          data-bs-target="#albumsCarousel"
+          [attr.data-bs-slide-to]="i"
+          [class.active]="i === 0"
+        ></button>
+      }
+    </div>
 
-  <div class="carousel-inner">
-    @for (album of albums; track album.idAlbum; let i = $index) {
-      <div class="carousel-item" [class.active]="i === 0">
-        <img
-          [src]="album.strAlbumThumb"
-          class="d-block w-100"
-          [alt]="album.strAlbum"
-          (click)="goToAlbum(album)"
-          loading="lazy"
-        />
-      </div>
-    }
-  </div>
+    <div class="carousel-inner">
+      @for (album of albums(); track album.idAlbum; let i = $index) {
+        <div class="carousel-item" [class.active]="i === 0">
+          <img
+            [src]="album.strAlbumThumb"
+            class="d-block w-100"
+            [alt]="album.strAlbum"
+            (click)="goToAlbum(album)"
+            loading="lazy"
+          />
+        </div>
+      }
+    </div>
 
-  <!-- Nawigacja -->
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#albumsCarousel"
-    data-bs-slide="prev"
-  >
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#albumsCarousel"
-    data-bs-slide="next"
-  >
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
+    <!-- Nawigacja -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#albumsCarousel"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#albumsCarousel"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+}

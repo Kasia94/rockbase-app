@@ -1,12 +1,20 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 #albumsCarousel {
   max-width: 400px;
   margin: 0 auto;
+  @include respond-to(md) {
+    #albumsCarousel {
+      max-width: 300px;
+    }
+  }
 }
 
 .carousel-item {
   text-align: center;
   height: 400px;
-  width: 400px;
+  width: 100%;
 
   img {
     display: block;

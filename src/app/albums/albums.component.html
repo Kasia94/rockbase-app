@@ -1,9 +1,5 @@
 <h2>Albumy</h2>
-<app-search
-  [placeholder]="'Szukaj albumus...'"
-  [query]="albumName()"
-  (searchPhrese)="searchAlbums($event)"
-></app-search>
+<app-search [placeholder]="'Szukaj albumu...'" (searchPhrase)="searchAlbums($event)"></app-search>
 
 @if (paginatedAlbums().length > 0) {
   <div class="side-decor left"></div>
@@ -11,11 +7,10 @@
     <ul>
       @for (album of paginatedAlbums(); track album.idAlbum) {
         <li class="row">
-          @if (album) {
-            <div class="col img-col">
-              <img [src]="album.strAlbumThumb" alt="Album" />
-            </div>
-          }
+          <div class="col img-col">
+            <img [src]="album.strAlbumThumb || 'assets/gibson.png'" alt="Album" />
+          </div>
+
           <div class="col text-col">
             <h3>{{ album.strAlbum }} - {{ album.strArtist }}</h3>
             <p>Rok wydania: {{ album.intYearReleased }}</p>
@@ -27,7 +22,7 @@
       }
     </ul>
   </div>
-  @if (paginatedAlbums().length > 1) {
+  @if (totalItems() > pageSize()) {
     <app-pagination
       class="pagination"
       [page]="page()"

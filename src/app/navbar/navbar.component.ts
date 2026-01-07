@@ -15,7 +15,7 @@ export class NavbarComponent {
     this.themeService.toggleTheme();
   }
 
-  isDarkMode() {
+  get isDarkMode() {
     return this.themeService.isDarkMode;
   }
 }

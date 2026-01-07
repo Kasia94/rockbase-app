@@ -1,8 +1,5 @@
-:host {
-  padding: 1rem;
-  list-style: none;
-  align-items: center;
-}
+@import '../../styles/variables';
+@import '../../styles/mixins';
 
 ul {
   list-style: none;
@@ -16,10 +13,6 @@ h2 {
 
 h3 {
   text-align: left;
-}
-
-img {
-  max-width: 50%;
 }
 
 .search,
@@ -68,7 +61,6 @@ p {
   background-repeat: repeat-y;
   background-size: 100%;
   transform: scaleY(-1);
-  transform: rotateX('angle');
   z-index: -5;
 }
 .left {
@@ -79,7 +71,7 @@ p {
   right: 0;
 }
 
-@media (max-width: 868px) {
+@include respond-to(lg) {
   .side-decor {
     display: none;
   }

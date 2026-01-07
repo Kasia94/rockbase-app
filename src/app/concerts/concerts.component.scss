@@ -3,14 +3,14 @@
   flex-direction: column;
   padding: 1rem;
   list-style: none;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--navbar-height));
+  ul {
+    list-style: none;
+  }
 }
 
 .main-content {
   flex: 1;
-}
-ul {
-  list-style: none;
 }
 h2,
 h3 {
@@ -37,12 +37,8 @@ p {
 }
 
 .pagination {
-  // position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   gap: 10px;
   padding: 0.5rem;
   z-index: 100;
-  // margin-top: 1.5rem;
 }

@@ -1,10 +1,11 @@
-import { Album } from '../models/album.model';
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, computed, inject, signal } from '@angular/core';
 import { PaginationComponent } from '../pagination/pagination.component';
 
 import { SearchComponent } from '../search/search.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BandsService } from '../services/bands.service';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-albums',
@@ -12,7 +13,7 @@ import { BandsService } from '../services/bands.service';
   templateUrl: './albums.component.html',
   styleUrl: './albums.component.scss',
 })
-export class AlbumsComponent implements OnInit {
+export class AlbumsComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private bandService = inject(BandsService);
@@ -21,53 +22,43 @@ export class AlbumsComponent implements OnInit {
   page = signal(1);
   pageSize = signal(5);
 
-  albumSignal = signal<{ albums: Album[] }>({ albums: [] });
+  albums = toSignal(
+    this.route.queryParams.pipe(
+      switchMap((params) => {
+        const name = params['album'];
+        const id = this.route.snapshot.paramMap.get('id');
 
-  ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      const name = params['album'];
-      const idAlbum = this.route.snapshot.paramMap.get('id');
-      if (name) {
-        this.albumName.set(name);
-        this.bandService.getAlbums(name).subscribe((result) => {
-          this.albumSignal.set(result);
-          this.page.set(1);
-        });
-      } else if (idAlbum) {
-        this.bandService.getAlbumById(idAlbum).subscribe((result) => {
-          this.albumSignal.set(result);
-        });
-      } else {
-        this.albumName.set('');
-        this.albumSignal.set({ albums: [] });
-      }
-    });
-  }
+        if (name) {
+          return this.bandService.getAlbums(name);
+        }
+
+        if (id) {
+          return this.bandService.getAlbumById(id);
+        }
+
+        return of({ albums: [] });
+      })
+    ),
+    { initialValue: { albums: [] } }
+  );
 
   paginatedAlbums = computed(() => {
-    const albums = this.albumSignal().albums || [];
+    const albums = this.albums().albums || [];
     const start = (this.page() - 1) * this.pageSize();
     return albums.slice(start, start + this.pageSize());
   });
 
   searchAlbums(name: string) {
-    this.albumName.set(name);
-    if (name) {
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: { album: name },
-        queryParamsHandling: 'merge',
-      });
-    } else {
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: {},
-      });
-      this.albumSignal.set({ albums: [] });
-    }
+    this.page.set(1);
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: name ? { album: name } : {},
+      queryParamsHandling: name ? 'merge' : undefined,
+    });
   }
   onPageChange(newPage: number) {
     this.page.set(newPage);
   }
-  totalItems = computed(() => this.albumSignal().albums?.length | 0);
+  totalItems = computed(() => this.albums().albums.length);
 }

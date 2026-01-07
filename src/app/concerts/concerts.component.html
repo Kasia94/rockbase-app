@@ -1,14 +1,12 @@
 <h2>Koncerty</h2>
 <app-search
   [placeholder]="'Szukaj koncertu...'"
-  [query]="concertName()"
-  (searchPhrese)="searchConcert($event)"
+  (searchPhrase)="searchConcert($event)"
 ></app-search>
 @if (paginatedConcerts().length) {
   <ul class="main-content">
     @for (concert of paginatedConcerts(); track concert.id) {
       <li>
-        @if (concert.name) {}
         <h3>
           {{ concert.type + ' ' + concert.name }}
         </h3>
@@ -18,7 +16,7 @@
           </div>
           @if (concert.relations.length > 0) {
             <ul class="col">
-              @for (rel of concert.relations; track $index) {
+              @for (rel of concert.relations; track rel.artist?.id) {
                 @if (rel.artist) {
                   <li>
                     {{ rel.artist.name }}
@@ -33,13 +31,15 @@
       </li>
     }
   </ul>
-  <app-pagination
-    class="pagination"
-    [page]="page()"
-    [pageSize]="pageSize()"
-    [totalItems]="totalItems()"
-    (pageChange)="onPageChange($event)"
-  ></app-pagination>
+  @if (totalItems() > pageSize()) {
+    <app-pagination
+      class="pagination"
+      [page]="page()"
+      [pageSize]="pageSize()"
+      [totalItems]="totalItems()"
+      (pageChange)="onPageChange($event)"
+    ></app-pagination>
+  }
 } @else {
   <p>Brak wyszukiwanego koncertu</p>
   <img class="guitarist-picture" src="assets/artist-shadow.png" alt="artist-shadow" />

@@ -14,10 +14,19 @@
   justify-content: space-between;
   padding: 0 30px;
   z-index: 1000;
-  font-family: 'Arial', sans-serif;
+  font-family: $font-primary;
+
+  @include respond-to(md) {
+    height: 60px;
+    padding: 0 16px;
+  }
+
+  @include respond-to(sm) {
+    height: 56px;
+  }
 }
 
-.logo a {
+.logo {
   font-size: 24px;
   text-decoration: none;
   text-transform: uppercase;
@@ -39,10 +48,15 @@
   font-size: 16px;
   transition: color 0.3s ease;
   padding: 7px;
+  border: 0.5px solid transparent;
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .nav-links a:hover {
-  color: var(color-accent);
+  color: var(--color-accent);
   border: 0.5px solid #e30613;
   border-radius: 6px;
 }
@@ -59,6 +73,16 @@
   object-fit: cover;
   object-position: left;
   transition: object-position 0.3s ease;
+
+  @include respond-to(md) {
+    width: 64px;
+    height: 32px;
+  }
+
+  @include respond-to(sm) {
+    width: 56px;
+    height: 28px;
+  }
 }
 
 .theme-toggle img.dark {

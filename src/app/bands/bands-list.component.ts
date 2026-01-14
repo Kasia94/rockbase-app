@@ -5,7 +5,6 @@ import { SearchComponent } from '../search/search.component';
 import { BandsService } from '../services/bands.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
-// import { Band } from '../models/band.model';
 import { map, of, switchMap, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -23,7 +22,6 @@ export class BandsListComponent {
   pageSize = signal(5);
   bandName = signal('');
 
-  // bandSignal = signal<{ artists: Band[] }>({ artists: [] });
   bands = toSignal(
     this.route.queryParams.pipe(
       tap(() => this.page.set(1)),
@@ -44,27 +42,6 @@ export class BandsListComponent {
     ),
     { initialValue: [] }
   );
-
-  // ngOnInit() {
-  //   this.route.queryParams.subscribe((params) => {
-  //     const name = params['band'];
-  //     const bandId = this.route.snapshot.paramMap.get('id');
-  //     if (name) {
-  //       this.bandName.set(name);
-  //       this.bandService.searchBand(name).subscribe((result) => {
-  //         this.bandSignal.set(result);
-  //         this.page.set(1);
-  //       });
-  //     } else if (bandId) {
-  //       this.bandService.getBandById(bandId).subscribe((result) => {
-  //         this.bandSignal.set(result);
-  //       });
-  //     } else {
-  //       this.bandName.set('');
-  //       this.bandSignal.set({ artists: [] });
-  //     }
-  //   });
-  // }
 
   paginatedBands = computed(() => {
     const bands = this.bands() || [];
